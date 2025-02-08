@@ -7,7 +7,7 @@
 .nav {
   display: flex;
   justify-content: space-around;
-
+  height: 12vh;
   font-family: var(--text-font);
   padding: 2em;
   background-color: var(--light-color);
