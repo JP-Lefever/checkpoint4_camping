@@ -10,8 +10,8 @@
   src: url("../public/font/Poppins.ttf");
 }
 @font-face {
-  font-family: "velinoSans";
-  src: url("../public/font/VelinoSans-Medium.otf");
+  font-family: "gotcha";
+  src: url("../public/font/gotcha-regular.ttf");
 }
 @font-face {
   font-family: "velinoBold";
@@ -31,5 +31,5 @@
   --cold-color: #fee8b7;
   --title-font: "velinoBold";
   --text-font: "popins";
-  --otherTitle-font: "velinoSans";
+  --otherTitle-font: "gotcha";
 }
