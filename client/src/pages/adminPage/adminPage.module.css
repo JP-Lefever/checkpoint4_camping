@@ -1,0 +1,11 @@
+.h1 {
+  font-family: var(--title-font);
+  font-size: 3em;
+  color: var(--primary-color);
+  text-align: center;
+}
+.main {
+  z-index: -1;
+
+  width: 100vw;
+}
