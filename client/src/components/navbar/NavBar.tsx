@@ -7,12 +7,16 @@ export default function NavBar() {
     <>
       <nav className={styles.nav}>
         <img className={styles.logo} src={logo} alt="logo camping" />
-        <ul>
+        <ul className={styles.list}>
           <li>
-            <NavLink to="/camping-5-etoiles">Camping 5*</NavLink>
+            <NavLink className={styles.link} to="/camping-5-etoiles">
+              Camping 5*
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/camping-4-etoiles">Camping 4*</NavLink>
+            <NavLink className={styles.link} to="/camping-4-etoiles">
+              Camping 4*
+            </NavLink>
           </li>
         </ul>
         <button type="button">connexion</button>
