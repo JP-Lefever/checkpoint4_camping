@@ -1,0 +1,10 @@
+.logo {
+  width: 5vw;
+  height: auto;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  border: solid 1px;
+}
