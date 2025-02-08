@@ -3,3 +3,32 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@font-face {
+  font-family: "popins";
+  src: url("../public/font/Poppins.ttf");
+}
+@font-face {
+  font-family: "velinoSans";
+  src: url("../public/font/VelinoSans-Medium.otf");
+}
+@font-face {
+  font-family: "velinoBold";
+  src: url("../public/font/VelinoText-Bold.otf");
+}
+
+@font-face {
+  font-family: "velino";
+  src: url();
+}
+
+:root {
+  --primary-color: #013134;
+  --secondary-color: #fc841c;
+  --light-color: #fed366;
+  --warm-color: #de4d0e;
+  --cold-color: #fee8b7;
+  --title-font: "velinoBold";
+  --text-font: "popins";
+  --otherTitle-font: "velinoSans";
+}
