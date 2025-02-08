@@ -1,0 +1,6 @@
+.h2 {
+  font-family: var(--title-font);
+  width: fit-content;
+  margin: 2em auto;
+  font-size: 2em;
+}
