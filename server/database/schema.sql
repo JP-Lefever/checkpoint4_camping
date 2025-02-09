@@ -61,9 +61,10 @@ CREATE TABLE IF NOT EXISTS rental(
   model_id INT UNSIGNED NOT NULL,
   size INT NOT NULL,
   max_pers INT NOT NULL,
-  price_night FLOAT NOT NULL,
+  price_night INT NOT NULL,
   opening DATE,
   closing DATE,
+  photo VARCHAR(255),
   CONSTRAINT fk_rental_model FOREIGN KEY(model_id) REFERENCES model(id)
 );
 

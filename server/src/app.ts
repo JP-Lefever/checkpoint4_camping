@@ -25,7 +25,7 @@ if (process.env.CLIENT_URL != null) {
 }
 
 // If you need to allow extra origins, you can add something like this:
-
+app.use("/upload", express.static("public/upload"));
 /*
 app.use(
   cors({
