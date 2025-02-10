@@ -8,8 +8,10 @@ const router = express.Router();
 
 // Define item-related routes
 import addCampingRoute from "../src/route/addCamping.route";
-
 router.use("/camping", addCampingRoute);
+
+import registerRoute from "../src/route/register.route";
+router.use("/register", registerRoute);
 
 /* ************************************************************************* */
 

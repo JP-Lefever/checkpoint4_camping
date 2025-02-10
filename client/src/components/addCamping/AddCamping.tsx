@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import styles from "./addCamping.module.css";
 
 export default function FormAddCamping() {
@@ -52,7 +53,7 @@ export default function FormAddCamping() {
     );
     if (response.ok) {
       const data = await response.json();
-      console.info(data.message);
+      toast.success(data.message);
     }
   };
 
