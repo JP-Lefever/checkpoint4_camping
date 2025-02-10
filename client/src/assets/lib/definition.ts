@@ -47,3 +47,16 @@ type CampingProps = {
   totalPitches: number;
   photoInfra: string;
 };
+
+type UserProps = {
+  id: number;
+  firstName: string;
+  lastname: string;
+  email: string;
+  birthdate: Date;
+  city: string;
+  zipCode: number;
+  tel: number;
+  password: string;
+  confirmpassword: string;
+};

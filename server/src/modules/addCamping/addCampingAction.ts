@@ -118,7 +118,7 @@ const addCamping: RequestHandler = async (req, res, next) => {
       camp_rentalId &&
       camp_pitchesId
     ) {
-      res.status(201).json({ message: "top" });
+      res.status(201).json({ message: "Le camping a bien été ajouté" });
     }
   } catch (e) {
     next(e);
