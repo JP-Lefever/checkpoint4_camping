@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS rental(
   model_id INT UNSIGNED NOT NULL,
   size INT NOT NULL,
   max_pers INT NOT NULL,
-  price_night INT NOT NULL,
+  pricePerNight FLOAT NOT NULL,
   opening DATE,
   closing DATE,
   photo VARCHAR(255),
@@ -72,7 +72,6 @@ CREATE TABLE IF NOT EXISTS camp_rental(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   rental_id INT UNSIGNED NOT NULL,
   camping_id INT UNSIGNED NOT NULL,
-  photo VARCHAR(255),
   number INT NOT NULL,
   CONSTRAINT fk_rental_rental FOREIGN KEY(rental_id) REFERENCES rental(id),
   CONSTRAINT fk_rental_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
@@ -93,6 +92,7 @@ CREATE TABLE IF NOT EXISTS pitches(
   max_pers INT NOT NULL,
   opening DATE,
   closing DATE,
+  photo VARCHAR(255),
   CONSTRAINT fk_type_pitches FOREIGN KEY(type_pitches_id) REFERENCES type_pitches(id)
 );
 
@@ -100,7 +100,6 @@ CREATE TABLE IF NOT EXISTS camp_pitches(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   pitches_id INT UNSIGNED NOT NULL,
   camping_id INT UNSIGNED NOT NULL,
-  photo VARCHAR(255),
   number INT NOT NULL,
   CONSTRAINT fk_pitches_pitches FOREIGN KEY(pitches_id) REFERENCES pitches(id),
   CONSTRAINT fk_pitches_camping FOREIGN KEY(camping_id) REFERENCES camping(id)

@@ -20,7 +20,7 @@ type CampingProps = {
   photo: string;
   opening: Date;
   closing: Date;
-  mail: string;
+  email: string;
   tel: number;
   stars: number;
   city: string;
@@ -30,7 +30,7 @@ type CampingProps = {
   modelMh: string;
   sizeMh: number;
   maxPers: number;
-  price: number;
+  pricePerNight: number;
   openingMh: Date;
   closingMh: Date;
   photoMh: string;
@@ -45,4 +45,5 @@ type CampingProps = {
   closingPitche: Date;
   photoPitche: string;
   totalPitches: number;
+  photoInfra: string;
 };

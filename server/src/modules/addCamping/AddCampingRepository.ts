@@ -25,7 +25,7 @@ type CampingProps = {
   opening: Date;
   closing: Date;
   description: string;
-  photo: string | undefined;
+  photo: string | null;
 };
 
 export type RentalProps = {
@@ -35,8 +35,25 @@ export type RentalProps = {
   maxPers: number;
   openingMh: Date;
   closingMh: Date;
-  linear: number;
-  photoMh: string | undefined;
+  photoMh: string | null;
+};
+
+type PitchProps = {
+  typePitche: number;
+  sizePitche: number;
+  isElectrified: number;
+  power: number;
+  pricePitche: number;
+  maxPersPitche: number;
+  openingPitche: string;
+  closingPitche: string;
+  photoPitche: string | null;
+};
+
+type InfraCampProps = {
+  infraId: number;
+  campingId: number;
+  photoInfra: string | null;
 };
 
 class AddCampingRepository {
@@ -101,22 +118,77 @@ class AddCampingRepository {
   }
 
   async addRental(rental: RentalProps) {
-    const {
-      model,
-      size,
-      price,
-      maxPers,
-      openingMh,
-      closingMh,
-      linear,
-      photoMh,
-    } = rental;
+    const { model, size, price, maxPers, openingMh, closingMh, photoMh } =
+      rental;
 
     const [result] = await db.query<Result>(
       `
-       INSERT INTO rental
-       VALUES (?,?,?,?,?,?,?,?)`,
-      [model, size, price, maxPers, openingMh, closingMh, linear, photoMh],
+       INSERT INTO rental (model_id,size,pricePerNight,max_pers,opening,closing,photo)
+       VALUES (?,?,?,?,?,?,?)`,
+      [model, size, price, maxPers, openingMh, closingMh, photoMh],
+    );
+    return result.insertId;
+  }
+
+  async addPitche(pitche: PitchProps) {
+    const {
+      typePitche,
+      sizePitche,
+      isElectrified,
+      power,
+      pricePitche,
+      maxPersPitche,
+      openingPitche,
+      closingPitche,
+      photoPitche,
+    } = pitche;
+
+    const [result] = await db.query<Result>(
+      `
+       INSERT INTO pitches (type_pitches_id ,size,is_electrified,power,price_night,max_pers,opening, closing, photo)
+       VALUES (?,?,?,?,?,?,?,?,?)`,
+      [
+        typePitche,
+        sizePitche,
+        isElectrified,
+        power,
+        pricePitche,
+        maxPersPitche,
+        openingPitche,
+        closingPitche,
+        photoPitche,
+      ],
+    );
+    return result.insertId;
+  }
+
+  async addInfra(infra: InfraCampProps) {
+    const { infraId, campingId, photoInfra } = infra;
+
+    const [result] = await db.query<Result>(
+      `
+       INSERT INTO camp_infra (infrastructure_id, camping_id, photo)
+       VALUES (?,?,?)`,
+      [infraId, campingId, photoInfra],
+    );
+    return result.insertId;
+  }
+  async addCampRental(campingId: number, rentalId: number, linear: number) {
+    const [result] = await db.query<Result>(
+      `
+       INSERT INTO camp_rental (camping_id, rental_id, number)
+       VALUES (?,?,?)`,
+      [campingId, rentalId, linear],
+    );
+    return result.insertId;
+  }
+
+  async addCampPitches(campingId: number, pitcheId: number, number: number) {
+    const [result] = await db.query<Result>(
+      `
+       INSERT INTO camp_pitches (camping_id, pitches_id, number)
+       VALUES (?,?,?)`,
+      [campingId, pitcheId, number],
     );
     return result.insertId;
   }

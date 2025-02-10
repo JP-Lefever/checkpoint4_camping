@@ -5,7 +5,7 @@ const storage = multer.diskStorage({
     cb(null, "public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname.split(" ").join(" _"));
+    cb(null, file.originalname.split(" ").join("_"));
   },
 });
 
@@ -23,4 +23,9 @@ export const upload = multer({
     }
   },
 });
-export const cpUpload = upload.fields([{ name: "photo" }, { name: "photoMh" }]);
+export const cpUpload = upload.fields([
+  { name: "photo" },
+  { name: "photoMh" },
+  { name: "photoPitche" },
+  { name: "photoInfra" },
+]);

@@ -3,7 +3,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import styles from "./addCamping.module.css";
 
 export default function FormAddCamping() {
-  const { register, handleSubmit } = useForm<CampingProps>();
+  const { register, handleSubmit, watch } = useForm<CampingProps>();
   const [mobilHome, setMobilHome] = useState<ModelProps[]>();
   const [pitches, setPitches] = useState<PitchesProps[]>();
   const [infra, setinfra] = useState<InfraProps[]>();
@@ -26,26 +26,36 @@ export default function FormAddCamping() {
       .then((data) => setinfra(data));
   }, []);
 
+  const infraId = watch("infra");
+  const modelId = watch("modelMh");
+  const pitcheId = watch("typePitche");
+
   const onSubmit: SubmitHandler<CampingProps> = async (data) => {
-    const { photo, photoMh, photoPitche, ...rest } = data;
+    const { photo, photoMh, photoPitche, photoInfra, ...rest } = data;
+
     const formData = new FormData();
     formData.append("photo", photo[0]);
     formData.append("photoMh", photoMh[0]);
     formData.append("photoPitche", photoPitche[0]);
-    formData.append("infoCamping", JSON.stringify(rest));
+    formData.append("photoInfra", photoInfra[0]);
+    formData.append("modelId", modelId);
+    formData.append("infraId", infraId);
+    formData.append("pitcheId", pitcheId);
+    formData.append("data", JSON.stringify(rest));
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/camping/new`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: { multipart: "form-data" },
+        body: formData,
       },
     );
     if (response.ok) {
       const data = await response.json();
-      alert(data);
+      console.info(data.message);
     }
   };
+
   return (
     <>
       <section className={styles.add_form}>
@@ -58,7 +68,7 @@ export default function FormAddCamping() {
             <input
               className={styles.input}
               type="text"
-              {...register("campingName")}
+              {...register("campingName", { required: "Champ requis" })}
             />
             <label className={styles.label} htmlFor="zipCode">
               Code postal
@@ -84,20 +94,20 @@ export default function FormAddCamping() {
               type="text"
               {...register("city", { required: "Champ requis" })}
             />
-            <label className={styles.label} htmlFor="mail">
+            <label className={styles.label} htmlFor="email">
               Email
             </label>
             <input
               className={styles.input}
               type="email"
-              {...register("mail", { required: "Champ requis" })}
+              {...register("email", { required: "Champ requis" })}
             />
             <label className={styles.label} htmlFor="tel">
               Téléphone
             </label>
             <input
               className={styles.input}
-              type="tel"
+              type="number"
               {...register("tel", { required: "Champ requis" })}
             />
             <label className={styles.label} htmlFor="stars">
@@ -138,7 +148,7 @@ export default function FormAddCamping() {
             <input
               className={styles.input}
               type="file"
-              {...register("photo", { required: "Champ requis" })}
+              {...register("photo")}
             />
           </fieldset>
           <fieldset className={styles.fieldset}>
@@ -151,7 +161,11 @@ export default function FormAddCamping() {
               {...register("modelMh", { required: "Champ requis" })}
             >
               {mobilHome
-                ? mobilHome.map((m) => <option key={m.id}>{m.label}</option>)
+                ? mobilHome.map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.label}
+                    </option>
+                  ))
                 : ""}
             </select>
             <label className={styles.label} htmlFor="sizeMh">
@@ -162,13 +176,14 @@ export default function FormAddCamping() {
               type="number"
               {...register("sizeMh", { required: "Champ requis" })}
             />
-            <label className={styles.label} htmlFor="price">
+            <label className={styles.label} htmlFor="pricePerNight">
               Prix/nuit
             </label>
             <input
               className={styles.input}
               type="number"
-              {...register("price", { required: "Champ requis" })}
+              step="0.01"
+              {...register("pricePerNight", { required: "Champ requis" })}
             />
             <label className={styles.label} htmlFor="maxPers">
               Max personnes
@@ -208,7 +223,7 @@ export default function FormAddCamping() {
             <input
               className={styles.input}
               type="file"
-              {...register("photoMh", { required: "Champ requis" })}
+              {...register("photoMh")}
             />
           </fieldset>
           <fieldset className={styles.fieldset}>
@@ -221,11 +236,15 @@ export default function FormAddCamping() {
               {...register("typePitche", { required: "Champ requis" })}
             >
               {pitches
-                ? pitches.map((p) => <option key={p.id}>{p.label}</option>)
+                ? pitches.map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.label}
+                    </option>
+                  ))
                 : ""}
             </select>
             <label className={styles.label} htmlFor="sizePitche">
-              Taille
+              Taille (en m2)
             </label>
             <input
               className={styles.input}
@@ -238,6 +257,7 @@ export default function FormAddCamping() {
             <input
               className={styles.input}
               type="number"
+              step="0.01"
               {...register("pricePitche", { required: "Champ requis" })}
             />
             <label className={styles.label} htmlFor="maxPersPitche">
@@ -297,7 +317,7 @@ export default function FormAddCamping() {
             <input
               className={styles.input}
               type="file"
-              {...register("photoPitche", { required: "Champ requis" })}
+              {...register("photoPitche")}
             />
           </fieldset>
           <fieldset className={styles.fieldset}>
@@ -312,11 +332,25 @@ export default function FormAddCamping() {
               {...register("infra", { required: "Champ requis" })}
             >
               {infra
-                ? infra.map((i) => <option key={i.id}>{i.label}</option>)
+                ? infra.map((i) => (
+                    <option key={i.id} value={i.id}>
+                      {i.label}
+                    </option>
+                  ))
                 : ""}
             </select>
+            <label className={styles.label} htmlFor="photoInfra">
+              Photo
+            </label>
+            <input
+              className={styles.input}
+              type="file"
+              {...register("photoInfra")}
+            />
           </fieldset>
-          <button type="submit">Je valide les Informations</button>
+          <button onClick={() => console.info("click")} type="submit">
+            Je valide les Informations
+          </button>
         </form>
       </section>
     </>
