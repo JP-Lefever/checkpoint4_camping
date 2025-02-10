@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo-camp.jpg";
 import styles from "./navBar.module.css";
 
+import LogButton from "../../LogButton/LogButton";
+
 export default function NavBar() {
   return (
     <>
@@ -19,7 +21,7 @@ export default function NavBar() {
             </NavLink>
           </li>
         </ul>
-        <button type="button">connexion</button>
+        <LogButton />
       </nav>
     </>
   );
