@@ -17,10 +17,11 @@ export default function RegisterPage() {
   passwordRef.current = watch("password", "");
 
   const onSubmit: SubmitHandler<UserProps> = async (data) => {
+    const { confirmpassword, ...rest } = data;
     const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(rest),
     });
 
     if (response.ok) {
