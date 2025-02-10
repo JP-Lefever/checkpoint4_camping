@@ -1,8 +1,8 @@
 import { type ReactNode, useRef } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import logo from "../../assets/images/logo-camp.jpg";
-// import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./register.module.css";
 
 export default function RegisterPage() {
@@ -16,18 +16,23 @@ export default function RegisterPage() {
   const passwordRef = useRef({});
   passwordRef.current = watch("password", "");
 
-  const onSubmit: SubmitHandler<UserProps> = async (data) => {
-    const { confirmpassword, ...rest } = data;
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(rest),
-    });
-
-    if (response.ok) {
+  const onSubmit: SubmitHandler<UserProps> = async (userData) => {
+    const { confirmpassword, ...rest } = userData;
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/register/new`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(rest),
+        },
+      );
       const data = await response.json();
-      toast.success(data.message);
-    } else {
+      console.info(response.status);
+      if (response.status === 201) {
+        toast.success(data.message);
+      }
+    } catch (e) {
       toast.warning(
         "Une erreur est survenue, veuillez rééssayer utlérieurement",
       );
@@ -49,6 +54,20 @@ export default function RegisterPage() {
 
   return (
     <section className={styles.section}>
+      <ToastContainer
+        position="top-right"
+        autoClose={6000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      ;
       <img className={styles.logo} src={logo} alt="Logo camping" />
       <div className={styles.div}>
         <h2 className={styles.h2}>Inscription</h2>
@@ -77,14 +96,14 @@ export default function RegisterPage() {
             )}
           </div>
           <div>
-            <label htmlFor="lastname" className={styles.label}>
+            <label htmlFor="lastName" className={styles.label}>
               Nom
             </label>
             <input
               type="text"
               className={styles.input}
               placeholder="Doe"
-              {...register("lastname", {
+              {...register("lastName", {
                 required: "Le nom est obligatoire",
                 minLength: {
                   value: 2,
@@ -92,9 +111,9 @@ export default function RegisterPage() {
                 },
               })}
             />
-            {errors.lastname && (
+            {errors.lastName && (
               <p className={styles.role}>
-                {errors.lastname?.message as ReactNode}
+                {errors.lastName?.message as ReactNode}
               </p>
             )}
           </div>
@@ -148,7 +167,6 @@ export default function RegisterPage() {
             <input
               type="text"
               className={styles.input}
-              defaultValue={formDefaultDate}
               {...register("city", {
                 required: "La ville est obligatoire",
               })}
@@ -164,7 +182,6 @@ export default function RegisterPage() {
             <input
               type="number"
               className={styles.input}
-              defaultValue={formDefaultDate}
               {...register("zipCode", {
                 required: "Le code postal est obligatoire",
               })}
@@ -182,7 +199,6 @@ export default function RegisterPage() {
             <input
               type="tel"
               className={styles.input}
-              defaultValue={formDefaultDate}
               {...register("tel", {
                 required: "Le numéro de téléphone est obligatoire",
               })}

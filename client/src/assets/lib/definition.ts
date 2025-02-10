@@ -51,7 +51,7 @@ type CampingProps = {
 type UserProps = {
   id: number;
   firstName: string;
-  lastname: string;
+  lastName: string;
   email: string;
   birthdate: Date;
   city: string;
