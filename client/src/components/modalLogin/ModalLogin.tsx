@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
-import { useForm } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
+import { type SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styles from "./modalLogin.module.css";
 
 export default function ModalLogin() {
@@ -8,36 +9,38 @@ export default function ModalLogin() {
     register,
     formState: { errors },
 
-    // handleSubmit,
-  } = useForm();
+    handleSubmit,
+  } = useForm<UserProps>();
 
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  //   const formSubmit = async (data) => {
-  //     try {
-  //       const response = await axios.post(
-  //         `${import.meta.env.VITE_API_URL}/v1/auth/login`,
-  //         data,
-  //         // Ajout des credentials ici
-  //         {
-  //           withCredentials: true,
-  //         }
-  //       );
-  //       toast.success(response.data.message);
-
-  //       setTimeout(() => {
-  //         navigate("/");
-  //       }, 1500);
-  //     } catch (e) {
-  //       toast.error("Une erreur est survenue.");
-  //     }
-  //   };
+  const onSubmit: SubmitHandler<UserProps> = async (userData) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/auth/user`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(userData),
+        },
+      );
+      //   const data = response.json();
+      if (response.ok) {
+        // toast.success(data);
+        setTimeout(() => {
+          navigate("/home");
+        }, 1500);
+      }
+    } catch (e) {
+      toast.warning("Mot de passe ou identifiant incorrect");
+    }
+  };
 
   return (
     <div className={styles.div}>
       <h2 className={styles.h2}>Login</h2>
 
-      <form className={styles.form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div>
           <label htmlFor="email" className={styles.label}>
             Email

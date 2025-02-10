@@ -13,6 +13,9 @@ router.use("/camping", addCampingRoute);
 import registerRoute from "../src/route/register.route";
 router.use("/register", registerRoute);
 
+import authRoute from "../src/route/auth.route";
+router.use("/auth", authRoute);
+
 /* ************************************************************************* */
 
 export default router;
