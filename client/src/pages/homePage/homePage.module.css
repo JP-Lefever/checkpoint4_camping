@@ -14,3 +14,20 @@
   color: var(--secondary-color);
   font-weight: lighter;
 }
+.article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin: auto;
+  margin-bottom: 4em;
+  margin-top: 2em;
+  width: fit-content;
+  justify-content: center;
+}
+.camp {
+  margin: auto;
+}
+.main {
+  width: 90vw;
+  margin: auto;
+}

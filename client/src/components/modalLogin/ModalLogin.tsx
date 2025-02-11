@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { UserProps } from "../../assets/lib/definition";
 import styles from "./modalLogin.module.css";
 
 export default function ModalLogin({ closeModal }: { closeModal: () => void }) {

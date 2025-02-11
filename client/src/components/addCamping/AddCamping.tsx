@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import type {
+  CampingProps,
+  InfraProps,
+  ModelProps,
+  PitchesProps,
+} from "../../assets/lib/definition";
 import styles from "./addCamping.module.css";
 
 export default function FormAddCamping() {

@@ -3,6 +3,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import logo from "../../assets/images/logo-camp.jpg";
 import "react-toastify/dist/ReactToastify.css";
+import type { UserProps } from "../../assets/lib/definition";
 import styles from "./register.module.css";
 
 export default function RegisterPage() {

@@ -12,6 +12,16 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/camping/all/5`),
+        loader: () =>
+          Promise.all([
+            fetch(`${import.meta.env.VITE_API_URL}/camping/all/5`).then((res) =>
+              res.json(),
+            ),
+            fetch(`${import.meta.env.VITE_API_URL}/camping/all/4`).then((res) =>
+              res.json(),
+            ),
+          ]),
       },
     ],
   },

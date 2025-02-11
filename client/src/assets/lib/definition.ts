@@ -1,20 +1,21 @@
-type ModelProps = {
+export type ModelProps = {
   id: number;
   label: string;
 };
 
-type PitchesProps = {
+export type PitchesProps = {
   id: number;
   label: string;
 };
 
-type InfraProps = {
+export type InfraProps = {
   id: number;
   label: string;
 };
 
-type CampingProps = {
+export type CampingProps = {
   id: number;
+  label: string;
   campingName: string;
   description: string;
   photo: string;
@@ -48,7 +49,7 @@ type CampingProps = {
   photoInfra: string;
 };
 
-type UserProps = {
+export type UserProps = {
   id: number;
   firstName: string;
   lastName: string;
