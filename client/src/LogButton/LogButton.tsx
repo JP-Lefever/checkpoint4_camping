@@ -13,12 +13,17 @@ export default function LogButton() {
   };
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate("/home");
+    navigate("/");
   };
   const userInfo = false;
+
   return (
     <>
-      {openModalLogin && createPortal(<ModalLogin />, document.body)}
+      {openModalLogin &&
+        createPortal(
+          <ModalLogin closeModal={() => setOpenModalLogin(false)} />,
+          document.body,
+        )}
       <section>
         {!userInfo ? (
           <button

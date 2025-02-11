@@ -5,7 +5,7 @@ export const validPassword: RequestHandler = async (req, res, next) => {
   try {
     const { password, dbpassword } = req.body;
 
-    const isValidPassword = await checkPassword(password, dbpassword);
+    const isValidPassword = await checkPassword(dbpassword, password);
 
     if (!isValidPassword) {
       res

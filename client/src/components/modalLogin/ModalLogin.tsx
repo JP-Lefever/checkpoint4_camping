@@ -1,18 +1,16 @@
 import type { ReactNode } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import styles from "./modalLogin.module.css";
 
-export default function ModalLogin() {
+export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
   const {
     register,
     formState: { errors },
 
     handleSubmit,
   } = useForm<UserProps>();
-
-  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<UserProps> = async (userData) => {
     try {
@@ -21,15 +19,14 @@ export default function ModalLogin() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
           body: JSON.stringify(userData),
         },
       );
-      //   const data = response.json();
+      const data = await response.json();
       if (response.ok) {
-        // toast.success(data);
-        setTimeout(() => {
-          navigate("/home");
-        }, 1500);
+        toast.success(data.message);
+        closeModal();
       }
     } catch (e) {
       toast.warning("Mot de passe ou identifiant incorrect");
@@ -92,6 +89,7 @@ export default function ModalLogin() {
         <button type="submit" className={styles.button}>
           Login
         </button>
+        <NavLink to="/register">Créer un compte</NavLink>
       </form>
     </div>
   );

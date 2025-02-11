@@ -349,9 +349,7 @@ export default function FormAddCamping() {
               {...register("photoInfra")}
             />
           </fieldset>
-          <button onClick={() => console.info("click")} type="submit">
-            Je valide les Informations
-          </button>
+          <button type="submit">Je valide les Informations</button>
         </form>
       </section>
     </>
