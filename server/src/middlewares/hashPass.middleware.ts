@@ -6,7 +6,7 @@ export const newPassord: RequestHandler = async (req, res, next) => {
     const { password } = req.body;
 
     const passwordHahed = await hashPassword(password);
-    console.info(passwordHahed);
+
     if (passwordHahed) {
       req.body.password = passwordHahed;
     }
