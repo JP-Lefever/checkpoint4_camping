@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminLayer from "./AdminLayer";
 import App from "./App";
 import AdminPage from "./pages/adminPage/AdminPage";
+import DetailPage from "./pages/detailPage/DetailPage";
 import HomePage from "./pages/homePage/Homepage";
 import RegisterPage from "./pages/register/Register";
 
@@ -12,7 +13,6 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        // loader: () => fetch(`${import.meta.env.VITE_API_URL}/camping/all/5`),
         loader: () =>
           Promise.all([
             fetch(`${import.meta.env.VITE_API_URL}/camping/all/5`).then((res) =>
@@ -22,6 +22,10 @@ export const mainRouter = createBrowserRouter([
               res.json(),
             ),
           ]),
+      },
+      {
+        path: "/camping/:id",
+        element: <DetailPage />,
       },
     ],
   },

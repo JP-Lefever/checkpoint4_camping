@@ -43,7 +43,7 @@ const addCamping: RequestHandler = async (req, res, next) => {
   try {
     const data = JSON.parse(req.body.data);
     const files = req.files as CustomFiles;
-    const photo = files.photo?.[0]?.filename || null;
+    const photo = files.photoCamp?.[0]?.filename || null;
     const photoMh = files.photoMh?.[0]?.filename || null;
     const photoPitche = files.photoPitche?.[0]?.filename || null;
     const photoInfra = files.photoInfra?.[0]?.filename || null;

@@ -38,10 +38,10 @@ export default function FormAddCamping() {
   const pitcheId = watch("typePitche");
 
   const onSubmit: SubmitHandler<CampingProps> = async (data) => {
-    const { photo, photoMh, photoPitche, photoInfra, ...rest } = data;
+    const { photoCamp, photoMh, photoPitche, photoInfra, ...rest } = data;
 
     const formData = new FormData();
-    formData.append("photo", photo[0]);
+    formData.append("photo", photoCamp[0]);
     formData.append("photoMh", photoMh[0]);
     formData.append("photoPitche", photoPitche[0]);
     formData.append("photoInfra", photoInfra[0]);
@@ -149,13 +149,13 @@ export default function FormAddCamping() {
               type="text"
               {...register("description", { required: "Champ requis" })}
             />
-            <label className={styles.label} htmlFor="photo">
+            <label className={styles.label} htmlFor="photoCamp">
               Photo
             </label>
             <input
               className={styles.input}
               type="file"
-              {...register("photo")}
+              {...register("photoCamp")}
             />
           </fieldset>
           <fieldset className={styles.fieldset}>

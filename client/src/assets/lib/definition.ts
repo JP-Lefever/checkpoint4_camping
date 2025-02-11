@@ -18,6 +18,7 @@ export type CampingProps = {
   label: string;
   campingName: string;
   description: string;
+  photoCamp: string;
   photo: string;
   opening: Date;
   closing: Date;
