@@ -4,7 +4,7 @@ import CampingRepository from "./CampingRepository";
 const browseCamping5: RequestHandler = async (req, res, next) => {
   try {
     const allCamping = await CampingRepository.readAllCamping5();
-
+    console.info(allCamping);
     if (allCamping.length > 0) {
       res.status(201).json(allCamping);
     }
@@ -25,4 +25,18 @@ const browseCamping4: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browseCamping5, browseCamping4 };
+const readCampingInfo: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    console.info(req.params.id);
+    const campingInfo = await CampingRepository.readCampingInfo(id);
+
+    if (campingInfo) {
+      res.status(201).json(campingInfo);
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+export default { browseCamping5, browseCamping4, readCampingInfo };
