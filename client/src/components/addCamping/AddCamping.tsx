@@ -355,7 +355,9 @@ export default function FormAddCamping() {
               {...register("photoInfra")}
             />
           </fieldset>
-          <button type="submit">Je valide les Informations</button>
+          <button className={styles.button} type="submit">
+            Je valide les Informations
+          </button>
         </form>
       </section>
     </>
