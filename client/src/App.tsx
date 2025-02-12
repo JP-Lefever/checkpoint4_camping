@@ -13,7 +13,11 @@ function App() {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((data) => setUser(data.authentification));
+      .then((data) => {
+        setUser(data.authentification);
+
+        console.info(data);
+      });
   }, []);
 
   return (

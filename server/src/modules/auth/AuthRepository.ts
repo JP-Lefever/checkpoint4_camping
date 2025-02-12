@@ -5,6 +5,7 @@ type UserProps = {
   email: string;
   password: string;
   firstName: string;
+  role: string;
 };
 
 class AuthRepositroy {

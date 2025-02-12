@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { UserProps } from "../../assets/lib/definition";
 import styles from "./modalLogin.module.css";
@@ -12,6 +12,7 @@ export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
 
     handleSubmit,
   } = useForm<UserProps>();
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<UserProps> = async (userData) => {
     try {
@@ -28,6 +29,11 @@ export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
       if (response.ok) {
         toast.success(data.message);
         closeModal();
+        setTimeout(() => {
+          if (data.role === "admin") {
+            navigate("/admin");
+          }
+        }, 1000);
       }
     } catch (e) {
       toast.warning("Mot de passe ou identifiant incorrect");
