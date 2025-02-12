@@ -31,7 +31,7 @@ export default function RegisterPage() {
         },
       );
       const data = await response.json();
-      console.info(response.status);
+
       if (response.status === 201) {
         toast.success(data.message);
         setTimeout(() => {

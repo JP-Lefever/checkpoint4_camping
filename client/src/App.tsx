@@ -15,7 +15,6 @@ function App() {
       .then((res) => res.json())
       .then((data) => setUser(data.authentification));
   }, []);
-  console.info(user);
 
   return (
     <>

@@ -12,7 +12,6 @@ const readUserInformation: RequestHandler = async (req, res, next) => {
     const payload: payload = jwtDecode(token);
 
     const userInfo = await ProfilRepository.readUserInfo(payload.email);
-    console.info(userInfo);
 
     if (userInfo) {
       res.status(201).json(userInfo);
@@ -36,11 +35,11 @@ const updateUserInfo: RequestHandler = async (req, res, next) => {
     const token = req.cookies.auth_token;
     const payload: payload = jwtDecode(token);
 
-    const userIdUpdate = await ProfilRepository.updateUserInfo(
-      user,
-      payload.email,
-    );
+    const userId = await ProfilRepository.readUserByEmail(payload.email);
 
+    const userIdUpdate = await ProfilRepository.updateUserInfo(user, userId.id);
+
+    console.info(payload.email);
     if (userIdUpdate) {
       res.status(201).json({ message: "Profil mis à jour" });
     }

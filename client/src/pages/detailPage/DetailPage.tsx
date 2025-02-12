@@ -10,7 +10,7 @@ import styles from "./detailPage.module.css";
 export default function DetailPage() {
   const [infoCamping, setInfoCamping] = useState<CampingInfoProps>();
   const { id } = useParams();
-  console.info(infoCamping);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/camping/info/${id}`)
       .then((res) => res.json())

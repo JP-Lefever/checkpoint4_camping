@@ -49,6 +49,7 @@ export default function ProfilPage() {
   }, [reset]);
 
   const onSubmit: SubmitHandler<UserProps> = async (user) => {
+    console.info(user);
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/profil/edit`,
       {
@@ -61,6 +62,7 @@ export default function ProfilPage() {
     const data = await response.json();
     if (response.ok) {
       toast.success(data.message);
+      setEditForm(true);
     }
   };
 
@@ -209,11 +211,7 @@ export default function ProfilPage() {
               )}
             </div>
             {!editForm && (
-              <button
-                onClick={handleClickEdit}
-                className={styles.button}
-                type={"submit"}
-              >
+              <button className={styles.button} type={"submit"}>
                 Valider
               </button>
             )}
