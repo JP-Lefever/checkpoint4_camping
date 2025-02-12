@@ -55,6 +55,8 @@
   outline: none;
   transition: all 0.2s ease-in-out;
   font-family: var(--text-font);
+  color: var(--primary-color);
+  font-size: 1.1em;
 }
 
 .input:focus {
@@ -83,4 +85,9 @@
 .button:hover {
   background-color: var(--primary-color);
   opacity: 90%;
+}
+
+.editButton {
+  border: none;
+  background-color: var(--cold-color);
 }

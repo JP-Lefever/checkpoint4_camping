@@ -19,6 +19,9 @@ router.use("/auth", authRoute);
 import campRoute from "../src/route/campingInfo.route";
 router.use("/camping", campRoute);
 
+import profilRoute from "../src/route/profil.route";
+router.use("/profil", profilRoute);
+
 /* ************************************************************************* */
 
 export default router;
