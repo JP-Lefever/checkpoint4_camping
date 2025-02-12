@@ -97,3 +97,7 @@ export type ConnectedProps = {
   user: boolean;
   setUser: (s: boolean) => void;
 };
+
+export type OutletContextType = {
+  addCampingOpen: boolean;
+};

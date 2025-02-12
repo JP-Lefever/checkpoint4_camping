@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const MAX_SIZE = 1000000000;
+const MAX_SIZE = 100000000000;
 export const upload = multer({
   storage: storage,
   limits: { files: MAX_SIZE },
@@ -24,7 +24,7 @@ export const upload = multer({
   },
 });
 export const cpUpload = upload.fields([
-  { name: "photo" },
+  { name: "photoCamp" },
   { name: "photoMh" },
   { name: "photoPitche" },
   { name: "photoInfra" },

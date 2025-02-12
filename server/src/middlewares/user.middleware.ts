@@ -1,6 +1,13 @@
 import type { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
+import { jwtDecode } from "jwt-decode";
 import AuthRepository from "../modules/auth/AuthRepository";
+
+type PayloadProps = {
+  firstName: string;
+  email: string;
+  role: string;
+};
 
 export const getUserByEmail: RequestHandler = async (req, res, next) => {
   try {
@@ -16,6 +23,7 @@ export const getUserByEmail: RequestHandler = async (req, res, next) => {
     }
     req.body.firstName = verifyMail.firstName;
     req.body.dbpassword = verifyMail.password;
+    req.body.role = verifyMail.role;
 
     next();
   } catch (e) {
@@ -65,9 +73,10 @@ export const checkAuth: RequestHandler = (req, res, next) => {
     }
 
     const verify = jwt.verify(token, process.env.APP_SECRET as string);
+    const decodeJwt: PayloadProps = jwtDecode(token);
 
     if (verify) {
-      res.json({ authentification: true });
+      res.json({ authentification: true, role: decodeJwt.role });
     } else {
       res.status(403).json({ authentification: false });
     }

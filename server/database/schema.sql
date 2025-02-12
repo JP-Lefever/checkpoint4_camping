@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS user  (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
@@ -8,7 +9,8 @@ CREATE TABLE IF NOT EXISTS user  (
   zipCode INT NOT NULL,
   tel VARCHAR(10),
   photo VARCHAR(255),
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(30) DEFAULT 'user'
 );
 
 CREATE TABLE IF NOT EXISTS camping (
@@ -134,3 +136,4 @@ VALUES
 ('Grand Confort'),
 ('Confort'),
 ('stardart');
+
