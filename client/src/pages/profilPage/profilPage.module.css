@@ -55,6 +55,7 @@
   outline: none;
   transition: all 0.2s ease-in-out;
   font-family: var(--text-font);
+  color: var(--primary-color);
 }
 
 .input:focus {

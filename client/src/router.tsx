@@ -4,6 +4,7 @@ import App from "./App";
 import AdminPage from "./pages/adminPage/AdminPage";
 import DetailPage from "./pages/detailPage/DetailPage";
 import HomePage from "./pages/homePage/Homepage";
+import ProfilPage from "./pages/profilPage/ProfilPage";
 import RegisterPage from "./pages/register/Register";
 
 export const mainRouter = createBrowserRouter([
@@ -26,6 +27,10 @@ export const mainRouter = createBrowserRouter([
       {
         path: "/camping/:id",
         element: <DetailPage />,
+      },
+      {
+        path: "/profil",
+        element: <ProfilPage />,
       },
     ],
   },

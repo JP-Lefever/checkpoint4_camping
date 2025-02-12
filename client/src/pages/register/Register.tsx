@@ -3,6 +3,7 @@ import { type SubmitHandler, useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import logo from "../../assets/images/logo-camp.jpg";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 import type { UserProps } from "../../assets/lib/definition";
 import styles from "./register.module.css";
 
@@ -16,6 +17,7 @@ export default function RegisterPage() {
 
   const passwordRef = useRef({});
   passwordRef.current = watch("password", "");
+  const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<UserProps> = async (userData) => {
     const { confirmpassword, ...rest } = userData;
@@ -32,6 +34,9 @@ export default function RegisterPage() {
       console.info(response.status);
       if (response.status === 201) {
         toast.success(data.message);
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
       }
     } catch (e) {
       toast.warning(
@@ -71,9 +76,8 @@ export default function RegisterPage() {
       ;
       <img className={styles.logo} src={logo} alt="Logo camping" />
       <div className={styles.div}>
-        <h2 className={styles.h2}>Inscription</h2>
-
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <h2 className={styles.h2}>Inscription</h2>
           <div>
             <label htmlFor="firstName" className={styles.label}>
               Prénom

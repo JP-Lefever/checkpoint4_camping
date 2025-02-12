@@ -43,12 +43,13 @@ export const verifyToken: RequestHandler = (req, res, next) => {
   }
 };
 
-export const destroyToken: RequestHandler = (req, res, next) => {
+export const clearToken: RequestHandler = (req, res, next) => {
   try {
     const token = req.cookies.auth_token;
 
     if (token) {
-      res.clearCookie;
+      res.clearCookie("auth_token").json({ message: "A bientôt" });
+      next();
     }
   } catch (e) {
     next(e);
