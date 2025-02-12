@@ -15,11 +15,11 @@ export type InfraProps = {
 
 export type CampingProps = {
   id: number;
-  label: string;
   campingName: string;
+  label: string;
   description: string;
-  photoCamp: string;
   photo: string;
+  photoCamp: string;
   opening: Date;
   closing: Date;
   email: string;
@@ -39,6 +39,7 @@ export type CampingProps = {
   linear: number;
   typePitche: string;
   sizePitche: number;
+  size: number;
   electricity: boolean;
   power: number;
   pricePitche: number;
@@ -48,6 +49,35 @@ export type CampingProps = {
   photoPitche: string;
   totalPitches: number;
   photoInfra: string;
+  infra_name: string;
+};
+export type CampingInfoProps = {
+  id: number;
+  campingName: string;
+  description: string;
+  photoCamp: string;
+  opening: Date;
+  closing: Date;
+  email: string;
+  tel: number;
+  stars: number;
+  city: string;
+  zipCode: number;
+  adress: string;
+  infra: string;
+  modelMh: string;
+  sizeMh: number;
+  max_pers: number;
+  pricePerNight: number;
+  photoMh: string;
+  linear: number;
+  typePitche: string;
+  size: number;
+  pricePitche: number;
+  maxPersPitche: number;
+  photoPitche: string;
+  photoInfra: string;
+  infra_name: string;
 };
 
 export type UserProps = {
