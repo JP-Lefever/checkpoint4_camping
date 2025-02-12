@@ -1,10 +1,7 @@
 import { useOutletContext } from "react-router-dom";
+import type { OutletContextType } from "../../assets/lib/definition";
 import FormAddCamping from "../../components/addCamping/AddCamping";
 import styles from "./adminPage.module.css";
-
-type OutletContextType = {
-  addCampingOpen: boolean;
-};
 
 export default function AdminPage() {
   const { addCampingOpen } = useOutletContext<OutletContextType>();
