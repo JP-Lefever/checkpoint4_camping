@@ -76,8 +76,12 @@ export default function ProfilPage() {
     <>
       <section className={styles.section}>
         <div className={styles.div}>
-          <button onClick={handleClickEdit} type="button">
-            <FilePenLine />
+          <button
+            className={styles.editButton}
+            onClick={handleClickEdit}
+            type="button"
+          >
+            <FilePenLine color="#013134" size={42} />
           </button>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <h2 className={styles.h2}>Mes informations personnelles</h2>
@@ -205,7 +209,11 @@ export default function ProfilPage() {
               )}
             </div>
             {!editForm && (
-              <button className={styles.button} type={"submit"}>
+              <button
+                onClick={handleClickEdit}
+                className={styles.button}
+                type={"submit"}
+              >
                 Valider
               </button>
             )}

@@ -7,9 +7,7 @@ import type { CampingProps } from "../../assets/lib/definition";
 
 export default function HomePage() {
   const [camping5, camping4] = useLoaderData() as CampingProps[][];
-  console.info(camping5[0]);
-  console.info(camping4[0]);
-  // const camping5 = useLoaderData()as CampingProps[]
+
   return (
     <>
       <Header />

@@ -3,8 +3,9 @@ import logo from "../../assets/images/logo-camp.jpg";
 import styles from "./navBar.module.css";
 
 import LogButton from "../../LogButton/LogButton";
+import type { ConnectedProps } from "../../assets/lib/definition";
 
-export default function NavBar() {
+export default function NavBar({ user, setUser }: ConnectedProps) {
   return (
     <>
       <nav className={styles.nav}>
@@ -21,7 +22,7 @@ export default function NavBar() {
             </NavLink>
           </li>
         </ul>
-        <LogButton />
+        <LogButton user={user} setUser={setUser} />
       </nav>
     </>
   );

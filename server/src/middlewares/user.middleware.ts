@@ -55,3 +55,23 @@ export const clearToken: RequestHandler = (req, res, next) => {
     next(e);
   }
 };
+
+export const checkAuth: RequestHandler = (req, res, next) => {
+  try {
+    const token = req.cookies.auth_token;
+
+    if (!token) {
+      res.status(403).json({ authentification: false });
+    }
+
+    const verify = jwt.verify(token, process.env.APP_SECRET as string);
+
+    if (verify) {
+      res.json({ authentification: true });
+    } else {
+      res.status(403).json({ authentification: false });
+    }
+  } catch (e) {
+    next(e);
+  }
+};

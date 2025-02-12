@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  checkAuth,
   clearToken,
   getUserByEmail,
   verifyToken,
@@ -16,4 +17,5 @@ const router = express.Router();
 router.post("/user", getUserByEmail, validPassword, authAction.authUser);
 router.get("/logout", clearToken);
 router.get("/login", verifyToken);
+router.get("/connected", checkAuth);
 export default router;
