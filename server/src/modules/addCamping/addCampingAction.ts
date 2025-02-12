@@ -59,7 +59,7 @@ const addCamping: RequestHandler = async (req, res, next) => {
       opening: data.opening,
       closing: data.closing,
       description: data.description,
-      photo: photo,
+      photoCamp: photo,
     };
 
     const mobilhomeInfo = {

@@ -41,7 +41,7 @@ export default function FormAddCamping() {
     const { photoCamp, photoMh, photoPitche, photoInfra, ...rest } = data;
 
     const formData = new FormData();
-    formData.append("photo", photoCamp[0]);
+    formData.append("photoCamp", photoCamp[0]);
     formData.append("photoMh", photoMh[0]);
     formData.append("photoPitche", photoPitche[0]);
     formData.append("photoInfra", photoInfra[0]);

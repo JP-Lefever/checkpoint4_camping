@@ -25,7 +25,7 @@ type CampingProps = {
   opening: Date;
   closing: Date;
   description: string;
-  photo: string | null;
+  photoCamp: string | null;
 };
 
 export type RentalProps = {
@@ -93,7 +93,7 @@ class AddCampingRepository {
       opening,
       closing,
       description,
-      photo,
+      photoCamp,
     } = infoCamping;
     const [result] = await db.query<Result>(
       `
@@ -111,7 +111,7 @@ class AddCampingRepository {
         stars,
         opening,
         closing,
-        photo,
+        photoCamp,
       ],
     );
     return result.insertId;
