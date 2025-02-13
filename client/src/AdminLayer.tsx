@@ -6,6 +6,7 @@ import NavAdmin from "./components/navAdmin/NavAdmin";
 
 export default function AdminLayer() {
   const [addCampingOpen, setAddCampingOpen] = useState(false);
+  const [addMhOpen, setAddMhOpen] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -26,8 +27,10 @@ export default function AdminLayer() {
         <NavAdmin
           addCampingOpen={addCampingOpen}
           setAddCampingOpen={setAddCampingOpen}
+          addMhOpen={addMhOpen}
+          setAddMhOpen={setAddMhOpen}
         />
-        <Outlet context={{ addCampingOpen }} />
+        <Outlet context={{ addCampingOpen, addMhOpen }} />
         <ToastContainer
           position="top-center"
           autoClose={6000}

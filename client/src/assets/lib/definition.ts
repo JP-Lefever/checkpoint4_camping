@@ -100,4 +100,7 @@ export type ConnectedProps = {
 
 export type OutletContextType = {
   addCampingOpen: boolean;
+  addMhOpen: boolean;
+  setAddCampingOpen: (s: boolean) => void;
+  setAddMhOpen: (s: boolean) => void;
 };

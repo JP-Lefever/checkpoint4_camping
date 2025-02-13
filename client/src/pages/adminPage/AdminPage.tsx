@@ -1,10 +1,11 @@
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../../assets/lib/definition";
 import FormAddCamping from "../../components/addCamping/AddCamping";
+import AddTypeMobilhome from "../../components/addTypeMobilhome/AddTypeMobilhome";
 import styles from "./adminPage.module.css";
 
 export default function AdminPage() {
-  const { addCampingOpen } = useOutletContext<OutletContextType>();
+  const { addCampingOpen, addMhOpen } = useOutletContext<OutletContextType>();
   return (
     <>
       <section className={styles.main}>
@@ -14,6 +15,11 @@ export default function AdminPage() {
         {addCampingOpen && (
           <section>
             <FormAddCamping />
+          </section>
+        )}
+        {addMhOpen && (
+          <section>
+            <AddTypeMobilhome />
           </section>
         )}
       </section>

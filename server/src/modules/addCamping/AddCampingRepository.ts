@@ -70,7 +70,7 @@ class AddCampingRepository {
     return result.insertId;
   }
 
-  async addRental(rental: RentalProps) {
+  async createRental(rental: RentalProps) {
     const { model, size, price, maxPers, openingMh, closingMh, photoMh } =
       rental;
 
@@ -83,7 +83,7 @@ class AddCampingRepository {
     return result.insertId;
   }
 
-  async addPitche(pitche: PitchProps) {
+  async createPitche(pitche: PitchProps) {
     const {
       typePitche,
       sizePitche,
@@ -115,7 +115,7 @@ class AddCampingRepository {
     return result.insertId;
   }
 
-  async addInfra(infra: InfraCampProps) {
+  async createInfra(infra: InfraCampProps) {
     const { infraId, campingId, photoInfra } = infra;
 
     const [result] = await db.query<Result>(
@@ -126,7 +126,7 @@ class AddCampingRepository {
     );
     return result.insertId;
   }
-  async addCampRental(campingId: number, rentalId: number, linear: number) {
+  async createCampRental(campingId: number, rentalId: number, linear: number) {
     const [result] = await db.query<Result>(
       `
        INSERT INTO camp_rental (camping_id, rental_id, number)
@@ -136,13 +136,25 @@ class AddCampingRepository {
     return result.insertId;
   }
 
-  async addCampPitches(campingId: number, pitcheId: number, number: number) {
+  async createCampPitches(campingId: number, pitcheId: number, number: number) {
     const [result] = await db.query<Result>(
       `
        INSERT INTO camp_pitches (camping_id, pitches_id, number)
        VALUES (?,?,?)`,
       [campingId, pitcheId, number],
     );
+    return result.insertId;
+  }
+
+  async createMobilHome(label: string) {
+    const [result] = await db.query<Result>(
+      `
+      INSERT INTO model(label)
+      VALUES (?)
+      `,
+      [label],
+    );
+    console.info(result.insertId);
     return result.insertId;
   }
 }

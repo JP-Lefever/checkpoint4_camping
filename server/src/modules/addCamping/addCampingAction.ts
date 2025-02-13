@@ -38,6 +38,21 @@ const browseInfra: RequestHandler = async (req, res, next) => {
 type CustomFiles = {
   [key: string]: Express.Multer.File[];
 };
+const addMobihome: RequestHandler = async (req, res, next) => {
+  try {
+    const mobilhome = req.body;
+
+    const mobilhomeId = await AddCampingRepository.createMobilHome(
+      mobilhome.label,
+    );
+
+    if (mobilhomeId) {
+      res.status(201).json({ message: "Le mobil'home a bien été ajouté" });
+    }
+  } catch (e) {
+    next(e);
+  }
+};
 
 const addCamping: RequestHandler = async (req, res, next) => {
   try {
@@ -85,8 +100,8 @@ const addCamping: RequestHandler = async (req, res, next) => {
     };
 
     const campingId = await AddCampingRepository.createCamping(generalInfo);
-    const rentalId = await AddCampingRepository.addRental(mobilhomeInfo);
-    const pitcheId = await AddCampingRepository.addPitche(pitchesInfo);
+    const rentalId = await AddCampingRepository.createRental(mobilhomeInfo);
+    const pitcheId = await AddCampingRepository.createPitche(pitchesInfo);
 
     const infra = {
       infraId: data.infra,
@@ -94,17 +109,17 @@ const addCamping: RequestHandler = async (req, res, next) => {
       photoInfra: photoInfra,
     };
 
-    const infraId = await AddCampingRepository.addInfra(infra);
+    const infraId = await AddCampingRepository.createInfra(infra);
 
     const numberRental = data.linear;
-    const camp_rentalId = await AddCampingRepository.addCampRental(
+    const camp_rentalId = await AddCampingRepository.createCampRental(
       campingId,
       rentalId,
       numberRental,
     );
 
     const numberPitches = data.totalPitches;
-    const camp_pitchesId = await AddCampingRepository.addCampPitches(
+    const camp_pitchesId = await AddCampingRepository.createCampPitches(
       campingId,
       pitcheId,
       numberPitches,
@@ -125,4 +140,10 @@ const addCamping: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browseMobilhome, browsePitches, browseInfra, addCamping };
+export default {
+  browseMobilhome,
+  browsePitches,
+  browseInfra,
+  addCamping,
+  addMobihome,
+};

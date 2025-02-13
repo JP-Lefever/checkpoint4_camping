@@ -2,12 +2,15 @@ import { Power } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { OutletContextType } from "../../assets/lib/definition";
 import styles from "./navAdmin.module.css";
 
 export default function NavAdmin({
   addCampingOpen,
   setAddCampingOpen,
-}: { addCampingOpen: boolean; setAddCampingOpen: (s: boolean) => void }) {
+  addMhOpen,
+  setAddMhOpen,
+}: OutletContextType) {
   const [openMenu, setOpenMenu] = useState(false);
   const handleClickMenuCamping = () => setOpenMenu(!openMenu);
 
@@ -25,6 +28,7 @@ export default function NavAdmin({
   };
 
   const handleClickAddCamping = () => setAddCampingOpen(!addCampingOpen);
+  const handleClickAddMh = () => setAddMhOpen(!addMhOpen);
 
   return (
     <>
@@ -49,8 +53,13 @@ export default function NavAdmin({
               >
                 Ajouter un camping
               </button>
-              <li className={styles.li}>Modifier un camping</li>
-              <li className={styles.li}>Supprimer un camping</li>
+              <button
+                type="button"
+                onClick={handleClickAddMh}
+                className={styles.addCamp}
+              >
+                Ajouter un mobil'home
+              </button>
             </ul>
           )}
         </section>
