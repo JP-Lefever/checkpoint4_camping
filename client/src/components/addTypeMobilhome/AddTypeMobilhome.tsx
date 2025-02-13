@@ -4,7 +4,7 @@ import type { ModelProps } from "../../assets/lib/definition";
 import styles from "./addTypeMobilhome.module.css";
 
 export default function AddTypeMobilhome() {
-  const { register, handleSubmit } = useForm<ModelProps>();
+  const { register, handleSubmit, reset } = useForm<ModelProps>();
   const onSubmit: SubmitHandler<ModelProps> = async (infoMh) => {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/camping/new/mobilhome`,
@@ -18,6 +18,7 @@ export default function AddTypeMobilhome() {
     const data = await response.json();
     if (response.ok) {
       toast.success(data.message);
+      reset();
     }
   };
   return (

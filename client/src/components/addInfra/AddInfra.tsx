@@ -4,7 +4,7 @@ import type { InfraProps } from "../../assets/lib/definition";
 import styles from "./addInfra.module.css";
 
 export default function AddInfra() {
-  const { register, handleSubmit } = useForm<InfraProps>();
+  const { register, handleSubmit, reset } = useForm<InfraProps>();
   const onSubmit: SubmitHandler<InfraProps> = async (infoMh) => {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/camping/new/infra`,
@@ -18,6 +18,7 @@ export default function AddInfra() {
     const data = await response.json();
     if (response.ok) {
       toast.success(data.message);
+      reset();
     }
   };
   return (

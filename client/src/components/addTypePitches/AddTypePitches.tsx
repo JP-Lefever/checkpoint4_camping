@@ -4,7 +4,7 @@ import type { PitchesProps } from "../../assets/lib/definition";
 import styles from "./addTypePitches.module.css";
 
 export default function AddTypePitches() {
-  const { register, handleSubmit } = useForm<PitchesProps>();
+  const { register, handleSubmit, reset } = useForm<PitchesProps>();
   const onSubmit: SubmitHandler<PitchesProps> = async (infoPitches) => {
     const response = await fetch(
       `${import.meta.env.VITE_API_URL}/camping/new/pitches`,
@@ -18,6 +18,7 @@ export default function AddTypePitches() {
     const data = await response.json();
     if (response.ok) {
       toast.success(data.message);
+      reset();
     }
   };
   return (
