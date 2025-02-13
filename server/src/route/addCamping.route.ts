@@ -1,7 +1,7 @@
 import express from "express";
 import { cpUpload, upload } from "../middlewares/multer.middleware";
-import addCampingAction from "../modules/addCamping/addCampingAction";
 import { validateCamping } from "../middlewares/validation.middleware";
+import addCampingAction from "../modules/addCamping/addCampingAction";
 
 const router = express.Router();
 

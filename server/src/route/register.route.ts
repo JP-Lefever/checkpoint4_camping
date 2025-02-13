@@ -1,7 +1,7 @@
 import express from "express";
 import { newPassord } from "../middlewares/hashPass.middleware";
-import registerAction from "../modules/register/registerAction";
 import { validateRegister } from "../middlewares/validation.middleware";
+import registerAction from "../modules/register/registerAction";
 
 const router = express.Router();
 
