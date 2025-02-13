@@ -1,4 +1,3 @@
-import { ro } from "@faker-js/faker/.";
 import db, { type Result, type Rows } from "../../../database/client";
 import type { UserProps } from "../../lib/definition";
 
@@ -16,7 +15,7 @@ class ProfilRepository {
   }
 
   async updateUserInfo(
-    userInfo: Omit<UserProps, "id" | "password">,
+    userInfo: Omit<UserProps, "id" | "password" | "role">,
     userId: number,
   ) {
     const { firstName, lastName, email, tel, city, zipCode, birthdate } =

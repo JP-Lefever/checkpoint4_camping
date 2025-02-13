@@ -1,12 +1,7 @@
 import type { RequestHandler } from "express";
 import { jwtDecode } from "jwt-decode";
 import { encodeJWT } from "../../helpers/jwt.helper";
-
-type PayloadProps = {
-  firstName: string;
-  email: string;
-  role: string;
-};
+import type { PayloadProps } from "../../lib/definition";
 
 const authUser: RequestHandler = async (req, res, next) => {
   try {

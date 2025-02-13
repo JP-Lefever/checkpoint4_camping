@@ -1,60 +1,13 @@
-import { ad } from "@faker-js/faker/dist/airline-BnpeTvY9";
 import db, { type Rows, type Result } from "../../../database/client";
-
-type ModelProps = {
-  id: number;
-  label: string;
-};
-type PitchesProps = {
-  id: number;
-  label: string;
-};
-
-type InfraProps = {
-  id: number;
-  label: string;
-};
-type CampingProps = {
-  CampingName: string;
-  zipCode: number;
-  adress: string;
-  city: string;
-  email: string;
-  tel: number;
-  stars: number;
-  opening: Date;
-  closing: Date;
-  description: string;
-  photoCamp: string | null;
-};
-
-export type RentalProps = {
-  model: string;
-  size: number;
-  price: number;
-  maxPers: number;
-  openingMh: Date;
-  closingMh: Date;
-  photoMh: string | null;
-};
-
-type PitchProps = {
-  typePitche: number;
-  sizePitche: number;
-  isElectrified: number;
-  power: number;
-  pricePitche: number;
-  maxPersPitche: number;
-  openingPitche: string;
-  closingPitche: string;
-  photoPitche: string | null;
-};
-
-type InfraCampProps = {
-  infraId: number;
-  campingId: number;
-  photoInfra: string | null;
-};
+import type {
+  CampingProps,
+  InfraCampProps,
+  InfraProps,
+  ModelProps,
+  PitchProps,
+  PitchesProps,
+  RentalProps,
+} from "../../lib/definition";
 
 class AddCampingRepository {
   async readAllMobilhome() {

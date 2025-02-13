@@ -1,10 +1,5 @@
 import jwt from "jsonwebtoken";
-
-type UserProps = {
-  firstName: string;
-  email: string;
-  role: string;
-};
+import type { UserProps } from "../../src/lib/definition";
 
 export const encodeJWT = async (user: UserProps) => {
   const { email, firstName, role } = user;
