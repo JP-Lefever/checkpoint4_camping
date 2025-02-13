@@ -2,8 +2,8 @@ import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../../assets/lib/definition";
 import FormAddCamping from "../../components/addCamping/AddCamping";
 import AddTypeMobilhome from "../../components/addTypeMobilhome/AddTypeMobilhome";
-import styles from "./adminPage.module.css";
 import AddTypePitches from "../../components/addTypePitches/AddTypePitches";
+import styles from "./adminPage.module.css";
 
 export default function AdminPage() {
   const { addCampingOpen, addMhOpen, addPitchesOpen } =
