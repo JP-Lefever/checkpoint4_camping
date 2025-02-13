@@ -69,3 +69,10 @@
   background-color: var(--primary-color);
   opacity: 90%;
 }
+
+.link {
+  text-decoration: none;
+  color: var(--primary-color);
+  display: block;
+  text-align: center;
+}

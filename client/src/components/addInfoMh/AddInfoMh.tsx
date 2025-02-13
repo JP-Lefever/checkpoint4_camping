@@ -26,6 +26,7 @@ export default function AddInfoCamping({ register }: RegisterProps) {
           className={styles.input}
           {...register("modelMh", { required: "Champ requis" })}
         >
+          <option value={0}>Séléctionnez une type de mobil'home</option>
           {mobilHome
             ? mobilHome.map((m) => (
                 <option key={m.id} value={m.id}>
@@ -35,7 +36,7 @@ export default function AddInfoCamping({ register }: RegisterProps) {
             : ""}
         </select>
         <label className={styles.label} htmlFor="sizeMh">
-          Taille
+          Taille(en m2)
         </label>
         <input
           className={styles.input}

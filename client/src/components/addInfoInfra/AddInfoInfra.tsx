@@ -26,6 +26,7 @@ export default function AddInfoIngra({ register }: RegisterProps) {
           className={styles.input}
           {...register("infra", { required: "Champ requis" })}
         >
+          <option value={0}>Séléctionnez une infrastructure</option>
           {infra
             ? infra.map((i) => (
                 <option key={i.id} value={i.id}>

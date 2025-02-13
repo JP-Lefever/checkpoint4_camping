@@ -26,6 +26,7 @@ export default function AddInfoPitches({ register }: RegisterProps) {
           className={styles.input}
           {...register("typePitche", { required: "Champ requis" })}
         >
+          <option value={0}>Séléctionnez une type d'emplacement</option>
           {pitches
             ? pitches.map((p) => (
                 <option key={p.id} value={p.id}>
