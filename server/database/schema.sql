@@ -107,33 +107,3 @@ CREATE TABLE IF NOT EXISTS camp_pitches(
   CONSTRAINT fk_pitches_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
 );
 
-INSERT INTO infrastructure (label)
-VALUES 
-("Piscine"),
-("Tennis"),
-("Pétanque"),
-("Paddle"),
-("Bar"),
-("Restaurant"),
-("City Stade"),
-("Aire de jeux enfant"),
-("Beach Volley"),
-("Club enfant"),
-("Club Ado");
-
-INSERT INTO model (label)
-VALUES 
-('OTELLO 3 chambres'),
-('OTELLO 2 chambres'),
-('MALAGA 2 chambres'),
-('BERMUDES 3 chambres'),
-('BERMUDES 2 chambres'),
-('TOSCANES 4 chambres'),
-('TOSCANES 3 chambres');
-
-INSERT INTO type_pitches (label)
-VALUES
-('Grand Confort'),
-('Confort'),
-('stardart');
-

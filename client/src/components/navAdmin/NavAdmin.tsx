@@ -2,12 +2,19 @@ import { Power } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import type { OutletContextType } from "../../assets/lib/definition";
 import styles from "./navAdmin.module.css";
 
 export default function NavAdmin({
   addCampingOpen,
   setAddCampingOpen,
-}: { addCampingOpen: boolean; setAddCampingOpen: (s: boolean) => void }) {
+  addMhOpen,
+  setAddMhOpen,
+  addPitchesOpen,
+  setPitchesOpen,
+  addInfraOpen,
+  setAddInfraOpen,
+}: OutletContextType) {
   const [openMenu, setOpenMenu] = useState(false);
   const handleClickMenuCamping = () => setOpenMenu(!openMenu);
 
@@ -25,7 +32,9 @@ export default function NavAdmin({
   };
 
   const handleClickAddCamping = () => setAddCampingOpen(!addCampingOpen);
-
+  const handleClickAddMh = () => setAddMhOpen(!addMhOpen);
+  const handleClickAddPitches = () => setPitchesOpen(!addPitchesOpen);
+  const handleClickAddInfra = () => setAddInfraOpen(!addInfraOpen);
   return (
     <>
       <nav className={styles.nav}>
@@ -49,8 +58,27 @@ export default function NavAdmin({
               >
                 Ajouter un camping
               </button>
-              <li className={styles.li}>Modifier un camping</li>
-              <li className={styles.li}>Supprimer un camping</li>
+              <button
+                type="button"
+                onClick={handleClickAddMh}
+                className={styles.addCamp}
+              >
+                Ajouter un type de mobil'home
+              </button>
+              <button
+                type="button"
+                onClick={handleClickAddPitches}
+                className={styles.addCamp}
+              >
+                Ajouter un type d'emplacement
+              </button>
+              <button
+                type="button"
+                onClick={handleClickAddInfra}
+                className={styles.addCamp}
+              >
+                Ajouter une infrastructure
+              </button>
             </ul>
           )}
         </section>
