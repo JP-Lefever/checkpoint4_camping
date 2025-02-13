@@ -103,4 +103,6 @@ export type OutletContextType = {
   addMhOpen: boolean;
   setAddCampingOpen: (s: boolean) => void;
   setAddMhOpen: (s: boolean) => void;
+  addPitchesOpen: boolean;
+  setPitchesOpen: (s: boolean) => void;
 };

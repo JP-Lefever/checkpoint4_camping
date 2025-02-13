@@ -10,6 +10,8 @@ export default function NavAdmin({
   setAddCampingOpen,
   addMhOpen,
   setAddMhOpen,
+  addPitchesOpen,
+  setPitchesOpen,
 }: OutletContextType) {
   const [openMenu, setOpenMenu] = useState(false);
   const handleClickMenuCamping = () => setOpenMenu(!openMenu);
@@ -29,7 +31,7 @@ export default function NavAdmin({
 
   const handleClickAddCamping = () => setAddCampingOpen(!addCampingOpen);
   const handleClickAddMh = () => setAddMhOpen(!addMhOpen);
-
+  const handleClickAddPitches = () => setPitchesOpen(!addPitchesOpen);
   return (
     <>
       <nav className={styles.nav}>
@@ -59,6 +61,13 @@ export default function NavAdmin({
                 className={styles.addCamp}
               >
                 Ajouter un mobil'home
+              </button>
+              <button
+                type="button"
+                onClick={handleClickAddPitches}
+                className={styles.addCamp}
+              >
+                Ajouter un emplacement
               </button>
             </ul>
           )}

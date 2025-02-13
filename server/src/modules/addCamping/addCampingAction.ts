@@ -40,14 +40,26 @@ type CustomFiles = {
 };
 const addMobihome: RequestHandler = async (req, res, next) => {
   try {
-    const mobilhome = req.body;
+    const mobilhome = req.body.label;
 
-    const mobilhomeId = await AddCampingRepository.createMobilHome(
-      mobilhome.label,
-    );
+    const mobilhomeId = await AddCampingRepository.createMobilHome(mobilhome);
 
     if (mobilhomeId) {
       res.status(201).json({ message: "Le mobil'home a bien été ajouté" });
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+const addPitches: RequestHandler = async (req, res, next) => {
+  try {
+    const pitches = req.body.label;
+
+    const pitchesId = await AddCampingRepository.createPitches(pitches);
+
+    if (pitchesId) {
+      res.status(201).json({ message: "L'emplacement' a bien été ajouté" });
     }
   } catch (e) {
     next(e);
@@ -146,4 +158,5 @@ export default {
   browseInfra,
   addCamping,
   addMobihome,
+  addPitches,
 };

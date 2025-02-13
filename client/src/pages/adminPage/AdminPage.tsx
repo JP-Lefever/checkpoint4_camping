@@ -3,9 +3,11 @@ import type { OutletContextType } from "../../assets/lib/definition";
 import FormAddCamping from "../../components/addCamping/AddCamping";
 import AddTypeMobilhome from "../../components/addTypeMobilhome/AddTypeMobilhome";
 import styles from "./adminPage.module.css";
+import AddTypePitches from "../../components/addTypePitches/AddTypePitches";
 
 export default function AdminPage() {
-  const { addCampingOpen, addMhOpen } = useOutletContext<OutletContextType>();
+  const { addCampingOpen, addMhOpen, addPitchesOpen } =
+    useOutletContext<OutletContextType>();
   return (
     <>
       <section className={styles.main}>
@@ -20,6 +22,11 @@ export default function AdminPage() {
         {addMhOpen && (
           <section>
             <AddTypeMobilhome />
+          </section>
+        )}
+        {addPitchesOpen && (
+          <section>
+            <AddTypePitches />
           </section>
         )}
       </section>
