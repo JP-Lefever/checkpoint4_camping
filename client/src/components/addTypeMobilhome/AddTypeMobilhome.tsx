@@ -25,13 +25,13 @@ export default function AddTypeMobilhome() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <fieldset className={styles.fieldset}>
-          <legend className={styles.legend}> Ajouter un mobil'home</legend>
+          <legend className={styles.legend}> Ajouter un héberement</legend>
           <label className={styles.label} htmlFor="label">
-            Nom de mobil'home
+            Nom de l'hébergement
           </label>
           <input className={styles.inpit} type="text" {...register("label")} />
           <button className={styles.button} type="submit">
-            Ajouter un mobil'home
+            Ajouter un héberement
           </button>
         </fieldset>
       </form>

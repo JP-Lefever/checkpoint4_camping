@@ -72,7 +72,9 @@ export default function RegisterPage() {
         transition={Bounce}
       />
       ;
-      <img className={styles.logo} src={logo} alt="Logo camping" />
+      <a className={styles.linkLogo} href="/">
+        <img className={styles.logo} src={logo} alt="Logo camping" />
+      </a>
       <div className={styles.div}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <h2 className={styles.h2}>Inscription</h2>

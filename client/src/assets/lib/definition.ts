@@ -69,6 +69,7 @@ export type CampingInfoProps = {
   sizeMh: number;
   max_pers: number;
   pricePerNight: number;
+  price_night: string;
   photoMh: string;
   linear: number;
   typePitche: string;

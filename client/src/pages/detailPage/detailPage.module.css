@@ -97,6 +97,8 @@
   line-height: 2em;
 }
 .imgMh {
+  width: 26vw;
+  height: 33vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }

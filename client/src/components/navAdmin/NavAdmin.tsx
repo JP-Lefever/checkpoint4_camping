@@ -63,7 +63,7 @@ export default function NavAdmin({
                 onClick={handleClickAddMh}
                 className={styles.addCamp}
               >
-                Ajouter un type de mobil'home
+                Ajouter un type d'hébergement
               </button>
               <button
                 type="button"

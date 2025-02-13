@@ -111,10 +111,10 @@ export default function DetailPage() {
                   <h3>Des emplacement spacieux et ensolleillé</h3>
                   <p>Taille : {infoCamping.size} m2</p>
                   <p>Des emplacements electrifiés</p>
-                  <p>Jusqu'à {infoCamping.maxPersPitche} 8 personnes</p>
+                  <p>Jusqu'à {infoCamping.maxPersPitche} personnes</p>
                   <p>
                     A partir de
-                    <strong> {infoCamping.pricePerNight} € / nuit</strong>
+                    <strong> {infoCamping.price_night} € / nuit</strong>
                   </p>
                 </div>
                 <button className={styles.button} type="button">

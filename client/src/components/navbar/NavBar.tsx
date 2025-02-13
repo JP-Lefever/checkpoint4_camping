@@ -15,12 +15,12 @@ export default function NavBar({ user, setUser }: ConnectedProps) {
         <ul className={styles.list}>
           <li>
             <NavLink className={styles.link} to="#">
-              Camping 5*
+              Glamping 5*
             </NavLink>
           </li>
           <li>
             <NavLink className={styles.link} to="#">
-              Camping 4*
+              Glamping 4*
             </NavLink>
           </li>
         </ul>

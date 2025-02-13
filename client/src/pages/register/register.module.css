@@ -16,6 +16,13 @@
   top: 0;
   border: 2px solid var(--warm-color);
 }
+.linkLogo {
+  width: 4vw;
+  height: auto;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+}
 
 .h2 {
   font-size: 1.5em;
