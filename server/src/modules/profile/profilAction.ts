@@ -1,15 +1,12 @@
 import type { RequestHandler } from "express";
 import { jwtDecode } from "jwt-decode";
+import type { PayloadProps } from "../../lib/definition";
 import ProfilRepository from "./ProfilRepository";
-
-type payload = {
-  email: string;
-};
 
 const readUserInformation: RequestHandler = async (req, res, next) => {
   try {
     const token = req.cookies.auth_token;
-    const payload: payload = jwtDecode(token);
+    const payload: PayloadProps = jwtDecode(token);
 
     const userInfo = await ProfilRepository.readUserInfo(payload.email);
 
@@ -33,7 +30,7 @@ const updateUserInfo: RequestHandler = async (req, res, next) => {
       zipCode: Number(req.body.zipCode),
     };
     const token = req.cookies.auth_token;
-    const payload: payload = jwtDecode(token);
+    const payload: PayloadProps = jwtDecode(token);
 
     const userId = await ProfilRepository.readUserByEmail(payload.email);
 

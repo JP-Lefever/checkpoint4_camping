@@ -1,13 +1,8 @@
 import type { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import { jwtDecode } from "jwt-decode";
+import type { PayloadProps } from "../lib/definition";
 import AuthRepository from "../modules/auth/AuthRepository";
-
-type PayloadProps = {
-  firstName: string;
-  email: string;
-  role: string;
-};
 
 export const getUserByEmail: RequestHandler = async (req, res, next) => {
   try {

@@ -1,4 +1,4 @@
-import { SquareMenu, UserRound } from "lucide-react";
+import { Power, SquareMenu, UserRound } from "lucide-react";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -70,9 +70,11 @@ export default function LogButton({ user, setUser }: ConnectedProps) {
               className={styles.link}
               to="/profil"
             >
+              <UserRound className={styles.icon} />
               Mon profil
             </NavLink>
             <button className={styles.link} onClick={logout} type="button">
+              <Power className={styles.icon} />
               Se deconnecter
             </button>
           </ul>

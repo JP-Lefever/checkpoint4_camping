@@ -1,12 +1,5 @@
 import db, { type Rows } from "../../../database/client";
-
-type UserProps = {
-  id: number;
-  email: string;
-  password: string;
-  firstName: string;
-  role: string;
-};
+import type { UserProps } from "../../lib/definition";
 
 class AuthRepositroy {
   async readUserByEmail(email: string) {

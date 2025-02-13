@@ -96,7 +96,9 @@ export default function ModalLogin({ closeModal }: { closeModal: () => void }) {
         <button type="submit" className={styles.button}>
           Login
         </button>
-        <NavLink to="/register">Créer un compte</NavLink>
+        <NavLink className={styles.link} to="/register">
+          Créer un compte
+        </NavLink>
       </form>
     </div>
   );

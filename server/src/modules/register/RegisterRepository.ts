@@ -1,15 +1,5 @@
 import db, { type Result } from "../../../database/client";
-
-type UserProps = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  birthdate: Date;
-  city: string;
-  zipCode: number;
-  tel: number;
-  password: string;
-};
+import type { UserProps } from "../../lib/definition";
 
 class RegisterRepository {
   async createUser(user: UserProps) {

@@ -1,18 +1,5 @@
 import db, { type Rows } from "../../../database/client";
-type CampingProps = {
-  id: number;
-  campingName: string;
-  description: string;
-  photo: string;
-  opening: Date;
-  closing: Date;
-  email: string;
-  tel: number;
-  stars: number;
-  city: string;
-  zipCode: number;
-  adress: string;
-};
+import type { CampingInfoProps } from "../../lib/definition";
 
 class CampingRepository {
   async readAllCamping5() {
@@ -26,7 +13,7 @@ class CampingRepository {
       [STARS],
     );
 
-    return rows as CampingProps[];
+    return rows as CampingInfoProps[];
   }
 
   async readAllCamping4() {
@@ -40,7 +27,7 @@ class CampingRepository {
       [STARS],
     );
 
-    return rows as CampingProps[];
+    return rows as CampingInfoProps[];
   }
 
   async readCampingInfo(id: number) {
@@ -60,7 +47,7 @@ class CampingRepository {
             `,
       [id],
     );
-    return rows[0] as CampingProps;
+    return rows[0] as CampingInfoProps;
   }
 }
 export default new CampingRepository();

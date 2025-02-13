@@ -1,4 +1,3 @@
-import { fa } from "@faker-js/faker/.";
 import type { RequestHandler } from "express";
 
 import joi from "joi";
