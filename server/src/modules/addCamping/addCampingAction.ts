@@ -59,7 +59,21 @@ const addPitches: RequestHandler = async (req, res, next) => {
     const pitchesId = await AddCampingRepository.createPitches(pitches);
 
     if (pitchesId) {
-      res.status(201).json({ message: "L'emplacement' a bien été ajouté" });
+      res.status(201).json({ message: "L'emplacement a bien été ajouté" });
+    }
+  } catch (e) {
+    next(e);
+  }
+};
+
+const addInfra: RequestHandler = async (req, res, next) => {
+  try {
+    const infra = req.body.label;
+
+    const infraId = await AddCampingRepository.createInfrastructure(infra);
+
+    if (infraId) {
+      res.status(201).json({ message: "L'infrastructure a bien été ajoutée" });
     }
   } catch (e) {
     next(e);
@@ -159,4 +173,5 @@ export default {
   addCamping,
   addMobihome,
   addPitches,
+  addInfra,
 };

@@ -1,12 +1,13 @@
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextType } from "../../assets/lib/definition";
 import FormAddCamping from "../../components/addCamping/AddCamping";
+import AddInfra from "../../components/addInfra/AddInfra";
 import AddTypeMobilhome from "../../components/addTypeMobilhome/AddTypeMobilhome";
 import AddTypePitches from "../../components/addTypePitches/AddTypePitches";
 import styles from "./adminPage.module.css";
 
 export default function AdminPage() {
-  const { addCampingOpen, addMhOpen, addPitchesOpen } =
+  const { addCampingOpen, addMhOpen, addPitchesOpen, addInfraOpen } =
     useOutletContext<OutletContextType>();
   return (
     <>
@@ -27,6 +28,11 @@ export default function AdminPage() {
         {addPitchesOpen && (
           <section>
             <AddTypePitches />
+          </section>
+        )}
+        {addInfraOpen && (
+          <section>
+            <AddInfra />
           </section>
         )}
       </section>

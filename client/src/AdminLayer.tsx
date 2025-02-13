@@ -8,6 +8,7 @@ export default function AdminLayer() {
   const [addCampingOpen, setAddCampingOpen] = useState(false);
   const [addMhOpen, setAddMhOpen] = useState(false);
   const [addPitchesOpen, setAddPitchesOpen] = useState(false);
+  const [addInfraOpen, setAddInfraOpen] = useState(false);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -32,8 +33,12 @@ export default function AdminLayer() {
           setAddMhOpen={setAddMhOpen}
           addPitchesOpen={addPitchesOpen}
           setPitchesOpen={setAddPitchesOpen}
+          addInfraOpen={addInfraOpen}
+          setAddInfraOpen={setAddInfraOpen}
         />
-        <Outlet context={{ addCampingOpen, addMhOpen, addPitchesOpen }} />
+        <Outlet
+          context={{ addCampingOpen, addMhOpen, addPitchesOpen, addInfraOpen }}
+        />
         <ToastContainer
           position="top-center"
           autoClose={6000}

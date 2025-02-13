@@ -165,6 +165,18 @@ class AddCampingRepository {
       `,
       [label],
     );
+
+    return result.insertId;
+  }
+
+  async createInfrastructure(label: string) {
+    const [result] = await db.query<Result>(
+      `
+      INSERT INTO infrastructure(label)
+      VALUES (?)
+      `,
+      [label],
+    );
     console.info(result.insertId);
     return result.insertId;
   }

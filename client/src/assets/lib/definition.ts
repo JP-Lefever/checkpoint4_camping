@@ -105,4 +105,6 @@ export type OutletContextType = {
   setAddMhOpen: (s: boolean) => void;
   addPitchesOpen: boolean;
   setPitchesOpen: (s: boolean) => void;
+  addInfraOpen: boolean;
+  setAddInfraOpen: (s: boolean) => void;
 };
