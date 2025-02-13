@@ -8,7 +8,7 @@ import AddInfoPitches from "../addInfoPitches/AddInfoPitches";
 import styles from "./addCamping.module.css";
 
 export default function FormAddCamping() {
-  const { register, handleSubmit, watch } = useForm<CampingProps>();
+  const { register, handleSubmit, watch, reset } = useForm<CampingProps>();
 
   const infraId = watch("infra");
   const modelId = watch("modelMh");
@@ -36,6 +36,7 @@ export default function FormAddCamping() {
     if (response.ok) {
       const data = await response.json();
       toast.success(data.message);
+      reset();
     }
   };
 
