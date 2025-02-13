@@ -2,6 +2,7 @@ import { SquareMenu, UserRound } from "lucide-react";
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import type { ConnectedProps } from "../assets/lib/definition";
 import ModalLogin from "../components/modalLogin/ModalLogin";
 import styles from "./logButton.module.css";
@@ -18,11 +19,15 @@ export default function LogButton({ user, setUser }: ConnectedProps) {
     fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
       credentials: "include",
     })
+      .then((res) => res.json())
+      .then((data) => toast.success(data.message))
       .then(() => {
         setUser(!user);
         setOpenBurgerMenu(false);
       })
-      .then(() => setTimeout(() => navigate("/"), 1500));
+      .then(() => {
+        setTimeout(() => navigate("/"), 1500);
+      });
   };
 
   const [openBurgerMenu, setOpenBurgerMenu] = useState(false);
