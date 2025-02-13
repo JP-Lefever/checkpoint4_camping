@@ -1,6 +1,7 @@
 import { Power } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styles from "./navAdmin.module.css";
 
 export default function NavAdmin({
@@ -17,7 +18,10 @@ export default function NavAdmin({
   const logout = () => {
     fetch(`${import.meta.env.VITE_API_URL}/auth/logout`, {
       credentials: "include",
-    }).then(() => setTimeout(() => navigate("/"), 1500));
+    })
+      .then((res) => res.json())
+      .then((data) => toast.success(data.message))
+      .then(() => setTimeout(() => navigate("/"), 1500));
   };
 
   const handleClickAddCamping = () => setAddCampingOpen(!addCampingOpen);

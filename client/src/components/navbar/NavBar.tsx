@@ -9,7 +9,9 @@ export default function NavBar({ user, setUser }: ConnectedProps) {
   return (
     <>
       <nav className={styles.nav}>
-        <img className={styles.logo} src={logo} alt="logo camping" />
+        <a href="/">
+          <img className={styles.logo} src={logo} alt="logo camping" />
+        </a>
         <ul className={styles.list}>
           <li>
             <NavLink className={styles.link} to="/camping-5-etoiles">

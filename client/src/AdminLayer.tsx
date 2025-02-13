@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Bounce, ToastContainer } from "react-toastify";
 import styles from "./adminLayer.module.css";
 import NavAdmin from "./components/navAdmin/NavAdmin";
+
 export default function AdminLayer() {
   const [addCampingOpen, setAddCampingOpen] = useState(false);
 
@@ -26,6 +28,19 @@ export default function AdminLayer() {
           setAddCampingOpen={setAddCampingOpen}
         />
         <Outlet context={{ addCampingOpen }} />
+        <ToastContainer
+          position="top-center"
+          autoClose={6000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
       </main>
     </>
   );
