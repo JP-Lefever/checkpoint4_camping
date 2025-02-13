@@ -10,7 +10,7 @@ import type {
 import styles from "./addCamping.module.css";
 
 export default function FormAddCamping() {
-  const { register, handleSubmit, watch } = useForm<CampingProps>();
+  const { register, handleSubmit, watch, reset } = useForm<CampingProps>();
   const [mobilHome, setMobilHome] = useState<ModelProps[]>();
   const [pitches, setPitches] = useState<PitchesProps[]>();
   const [infra, setinfra] = useState<InfraProps[]>();
@@ -53,13 +53,13 @@ export default function FormAddCamping() {
       `${import.meta.env.VITE_API_URL}/camping/new`,
       {
         method: "POST",
-        headers: { multipart: "form-data" },
         body: formData,
       },
     );
     if (response.ok) {
       const data = await response.json();
       toast.success(data.message);
+      reset();
     }
   };
 

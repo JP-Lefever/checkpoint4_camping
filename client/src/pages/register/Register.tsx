@@ -13,6 +13,7 @@ export default function RegisterPage() {
     formState: { errors },
     watch,
     handleSubmit,
+    reset,
   } = useForm<UserProps>();
 
   const passwordRef = useRef({});
@@ -34,6 +35,7 @@ export default function RegisterPage() {
 
       if (response.status === 201) {
         toast.success(data.message);
+        reset();
         setTimeout(() => {
           navigate("/");
         }, 1500);
@@ -51,11 +53,7 @@ export default function RegisterPage() {
     today.getMonth(),
     today.getDate(),
   );
-  const displayedDate = dateMinusEighteen.toLocaleDateString("fr-FR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  });
+
   const formDefaultDate = dateMinusEighteen.toISOString().split("T")[0];
 
   return (
@@ -153,9 +151,12 @@ export default function RegisterPage() {
               defaultValue={formDefaultDate}
               {...register("birthdate", {
                 required: `La date de naissance est obligatoire ${formDefaultDate}`,
-                min: {
-                  value: dateMinusEighteen.toISOString().split("T")[0],
-                  message: `La date de naissance doit être supérieure à ${displayedDate}`,
+                validate: (value) => {
+                  const birthdate = new Date(value);
+                  const now = new Date(Date.now());
+                  if (birthdate.getFullYear() + 18 > now.getFullYear()) {
+                    return errors.birthdate?.message;
+                  }
                 },
               })}
             />
