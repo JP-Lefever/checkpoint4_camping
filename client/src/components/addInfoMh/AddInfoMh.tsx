@@ -18,15 +18,15 @@ export default function AddInfoCamping({ register }: RegisterProps) {
   return (
     <>
       <fieldset className={styles.fieldset}>
-        <legend className={styles.legend}>Information Mobil'home</legend>
+        <legend className={styles.legend}>Information hébergement</legend>
         <label className={styles.label} htmlFor="modelMh">
-          Type de mobil'home
+          Type d'hébergement
         </label>
         <select
           className={styles.input}
           {...register("modelMh", { required: "Champ requis" })}
         >
-          <option value={0}>Séléctionnez une type de mobil'home</option>
+          <option value={0}>Séléctionnez une type d'hébergement</option>
           {mobilHome
             ? mobilHome.map((m) => (
                 <option key={m.id} value={m.id}>
