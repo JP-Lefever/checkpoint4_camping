@@ -13,7 +13,7 @@ export default function HomePage() {
       <Header />
       <main className={styles.main}>
         <section className={styles.camp}>
-          <h2 className={styles.h2}>Découvrez nos camping 5*</h2>
+          <h2 className={styles.h2}>Découvrez nos Glamping 5*</h2>
           <h3 className={styles.h3}>De la nature & bien plus encore</h3>
           <article className={styles.article}>
             {camping5.map((c: CampingProps) => (
@@ -22,7 +22,7 @@ export default function HomePage() {
           </article>
         </section>
         <section className={styles.camp}>
-          <h2 className={styles.h2}>Découvrez nos camping 4*</h2>
+          <h2 className={styles.h2}>Découvrez nos Glamping 4*</h2>
           <h3 className={styles.h3}>Un vrai gout de nature</h3>
           <article className={styles.article}>
             {camping4.map((c: CampingProps) => (
