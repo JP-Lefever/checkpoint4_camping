@@ -7,11 +7,20 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Define item-related routes
-import itemActions from "./modules/item/itemActions";
+import addCampingRoute from "../src/route/addCamping.route";
+router.use("/camping", addCampingRoute);
 
-router.get("/api/items", itemActions.browse);
-router.get("/api/items/:id", itemActions.read);
-router.post("/api/items", itemActions.add);
+import registerRoute from "../src/route/register.route";
+router.use("/register", registerRoute);
+
+import authRoute from "../src/route/auth.route";
+router.use("/auth", authRoute);
+
+import campRoute from "../src/route/campingInfo.route";
+router.use("/camping", campRoute);
+
+import profilRoute from "../src/route/profil.route";
+router.use("/profil", profilRoute);
 
 /* ************************************************************************* */
 

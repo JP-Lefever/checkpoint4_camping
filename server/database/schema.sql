@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS user  (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
@@ -8,7 +9,8 @@ CREATE TABLE IF NOT EXISTS user  (
   zipCode INT NOT NULL,
   tel VARCHAR(10),
   photo VARCHAR(255),
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(30) DEFAULT 'user'
 );
 
 CREATE TABLE IF NOT EXISTS camping (
@@ -25,8 +27,6 @@ CREATE TABLE IF NOT EXISTS camping (
   closing DATE NOT NULL,
   photo VARCHAR(255)
 );
-
-
 
 CREATE TABLE IF NOT EXISTS book (
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -53,44 +53,57 @@ CREATE TABLE IF NOT EXISTS camp_infra(
   CONSTRAINT fk_infra_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
 );
 
+CREATE TABLE IF NOT EXISTS model(
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS rental(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  label VARCHAR(255) NOT NULL,
+  model_id INT UNSIGNED NOT NULL,
   size INT NOT NULL,
   max_pers INT NOT NULL,
-  price_night FLOAT NOT NULL,
+  pricePerNight FLOAT NOT NULL,
   opening DATE,
-  closing DATE
+  closing DATE,
+  photo VARCHAR(255),
+  CONSTRAINT fk_rental_model FOREIGN KEY(model_id) REFERENCES model(id)
 );
 
 CREATE TABLE IF NOT EXISTS camp_rental(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   rental_id INT UNSIGNED NOT NULL,
   camping_id INT UNSIGNED NOT NULL,
-  photo VARCHAR(255),
   number INT NOT NULL,
   CONSTRAINT fk_rental_rental FOREIGN KEY(rental_id) REFERENCES rental(id),
   CONSTRAINT fk_rental_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
 );
 
+CREATE TABLE IF NOT EXISTS type_pitches(
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  label VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS pitches(
-   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  label VARCHAR(255) NOT NULL,
+  id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  type_pitches_id INT UNSIGNED NOT Null,
   size INT NOT NULL,
   is_electrified BOOLEAN NOT NULL,
   power INT,
   price_night FLOAT NOT NULL,
   max_pers INT NOT NULL,
   opening DATE,
-  closing DATE
+  closing DATE,
+  photo VARCHAR(255),
+  CONSTRAINT fk_type_pitches FOREIGN KEY(type_pitches_id) REFERENCES type_pitches(id)
 );
 
 CREATE TABLE IF NOT EXISTS camp_pitches(
   id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   pitches_id INT UNSIGNED NOT NULL,
   camping_id INT UNSIGNED NOT NULL,
-  photo VARCHAR(255),
   number INT NOT NULL,
   CONSTRAINT fk_pitches_pitches FOREIGN KEY(pitches_id) REFERENCES pitches(id),
   CONSTRAINT fk_pitches_camping FOREIGN KEY(camping_id) REFERENCES camping(id)
 );
+
